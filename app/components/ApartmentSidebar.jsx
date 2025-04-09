@@ -1,4 +1,5 @@
 "use client";
+import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState, Suspense } from "react";
 
@@ -11,23 +12,9 @@ export function ApartmentSidebar() {
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden fixed bottom-4 right-4 z-30 bg-blue-600 text-white p-3 rounded-full shadow-lg"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 0V4m0 4h12m-12 4h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
-          />
-        </svg>
+        <AdjustmentsVerticalIcon className="w-6 h-6" />
       </button>
 
-      {/* Mobile sidebar container with semi-transparent backdrop */}
       <div
         className={`${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -38,7 +25,6 @@ export function ApartmentSidebar() {
         </Suspense>
       </div>
 
-      {/* Semi-transparent overlay for mobile */}
       {isOpen && (
         <div
           className="md:hidden fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-10"
@@ -152,21 +138,21 @@ function SidebarContent({ closeMobileMenu }) {
 
     params.set("availability", text);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    closeMobileMenu(); // Close mobile sidebar after selection
+    closeMobileMenu();
   };
 
   const handleSelectChange = (event, filterType) => {
     const value = event.target.value;
     params.set(filterType, value);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    closeMobileMenu(); // Close mobile sidebar after selection
+    closeMobileMenu();
   };
 
   const handleRoomClick = (roomCount) => {
     const value = roomCount === 5 ? "all" : roomCount.toString();
     params.set("rooms", value);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    closeMobileMenu(); // Close mobile sidebar after selection
+    closeMobileMenu();
   };
 
   const handleReset = () => {
@@ -178,12 +164,12 @@ function SidebarContent({ closeMobileMenu }) {
     params.delete("area");
     params.delete("rooms");
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    closeMobileMenu(); // Close mobile sidebar after reset
+    closeMobileMenu();
   };
 
   const handleApply = () => {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    closeMobileMenu(); // Close mobile sidebar after apply
+    closeMobileMenu();
   };
 
   return (
