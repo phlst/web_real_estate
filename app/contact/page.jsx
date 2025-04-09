@@ -54,7 +54,7 @@ function ContactContent() {
     name: "",
     email: "",
     subject: initialSubject,
-    message: property ? `I'm interested in property ${property}.` : "",
+    message: property ? `Mám záujem o nehnuteľnosť ${property}.` : "",
     refId: refId,
     property: property,
   });
@@ -66,14 +66,13 @@ function ContactContent() {
   });
 
   useEffect(() => {
-    // Update form when URL parameters change
     setFormData((prev) => ({
       ...prev,
       subject: initialSubject,
       refId: refId,
       property: property,
       message: property
-        ? `I'm interested in property ${property}.`
+        ? `Mám záujem o nehnuteľnosť ${property}.`
         : prev.message,
     }));
   }, [initialSubject, refId, property]);
@@ -113,10 +112,9 @@ function ContactContent() {
       if (result.success) {
         setSubmitStatus({
           success: true,
-          message: "Thank you for your message! We will get back to you soon.",
+          message: "Ďakujeme za vašu správu! Čoskoro sa vám ozveme.",
         });
 
-        // Reset form after successful submission
         setFormData({
           name: "",
           email: "",
@@ -126,13 +124,13 @@ function ContactContent() {
           property: "",
         });
       } else {
-        throw new Error(result.message || "Something went wrong");
+        throw new Error(result.message || "Niečo sa pokazilo");
       }
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus({
         success: false,
-        message: "We couldn't send your message. Please try again later.",
+        message: "Nemohli sme odoslať vašu správu. Skúste to prosím neskôr.",
       });
     } finally {
       setIsSubmitting(false);
@@ -140,11 +138,11 @@ function ContactContent() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className=" px-4 py-8 ">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
+        <h1 className="text-3xl font-bold mb-2">Kontaktujte nás</h1>
         <p className="text-gray-600 mb-8">
-          Fill out the form below and we'll get back to you as soon as possible.
+          Vyplňte formulár nižšie a ozveme sa vám čo najskôr.
         </p>
 
         {submitStatus.message && (
@@ -165,14 +163,14 @@ function ContactContent() {
                 htmlFor="name"
                 className="block text-gray-700 font-medium mb-1"
               >
-                Name
+                Meno
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholder="Your name"
+                placeholder="Vaše meno"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -191,7 +189,7 @@ function ContactContent() {
                 id="email"
                 name="email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholder="Your email address"
+                placeholder="Vaša emailová adresa"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -203,21 +201,21 @@ function ContactContent() {
                 htmlFor="subject"
                 className="block text-gray-700 font-medium mb-1"
               >
-                Subject
+                Predmet
               </label>
               <input
                 type="text"
                 id="subject"
                 name="subject"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholder="What is this regarding?"
+                placeholder="Čoho sa to týka?"
                 value={formData.subject}
                 onChange={handleChange}
                 required
               />
               {formData.property && (
                 <div className="mt-2 text-sm text-blue-600">
-                  Reference: Property #{formData.property}
+                  Referencia: Nehnuteľnosť #{formData.property}
                 </div>
               )}
             </div>
@@ -229,14 +227,14 @@ function ContactContent() {
                 htmlFor="message"
                 className="block text-gray-700 font-medium mb-1"
               >
-                Message
+                Správa
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows="6"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
-                placeholder="Your message"
+                placeholder="Vaša správa"
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -248,7 +246,7 @@ function ContactContent() {
               disabled={isSubmitting}
               className={`px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Odosielam..." : "Odoslať správu"}
             </button>
           </div>
         </form>

@@ -1,32 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
 const testimonialsData = [
   {
-    name: "Andrew Kovacs",
-    text: "Buying a house through this real estate company was an exceptional experience. The team was professional, attentive, and guided me through every step of the process. The property options were top-notch, and I found my dream home much faster than I anticipated. I would highly recommend their services to anyone looking for a home.",
+    name: "Andrej Kováč",
+    text: "Kúpa domu prostredníctvom tejto realitnej spoločnosti bola výnimočnou skúsenosťou. Tím bol profesionálny, pozorný a sprevádzal ma každým krokom procesu. Možnosti nehnuteľností boli špičkové a našiel som svoj vysnívaný dom omnoho rýchlejšie, než som očakával. Vrelo by som odporučil ich služby každému, kto hľadá domov.",
     img_url: "/images/andrew_kovacs.jpg",
   },
   {
-    name: "Sarah Johnson",
-    text: "I had an amazing experience with this real estate agency. They provided excellent customer service and were very knowledgeable about the market. They helped me find a beautiful home that fit all my needs. I couldn't be happier with my purchase!",
+    name: "Silvia Jankovičová",
+    text: "Mala som úžasnú skúsenosť s touto realitnou agentúrou. Poskytli mi vynikajúce zákaznícke služby a mali výborné znalosti o trhu. Pomohli mi nájsť krásny domov, ktorý vyhovoval všetkým mojim potrebám. Nemohla by som byť spokojnejšia so svojím nákupom!",
     img_url: "/images/sarah_johnson.jpg",
   },
   {
-    name: "Michael Smith",
-    text: "The team at this real estate company is fantastic! They made the home buying process seamless and stress-free. Their attention to detail and commitment to finding the perfect home for me was impressive. I highly recommend their services.",
+    name: "Michal Sýkora",
+    text: "Tím v tejto realitnej spoločnosti je fantastický! Proces kúpy domu urobili bezproblémový a bez stresu. Ich pozornosť k detailom a záväzok nájsť pre mňa perfektný domov bol pôsobivý. Vrelo odporúčam ich služby.",
     img_url: "/images/michael_smith.jpg",
   },
   {
-    name: "Emily Davis",
-    text: "From start to finish, my experience with this real estate company was excellent. They were always available to answer my questions and provided great advice throughout the process. I am thrilled with my new home and grateful for their help.",
+    name: "Eva Drobná",
+    text: "Od začiatku až do konca bola moja skúsenosť s touto realitnou spoločnosťou výborná. Vždy boli k dispozícii odpovedať na moje otázky a poskytli skvelé rady počas celého procesu. Som nadšená z môjho nového domova a vďačná za ich pomoc.",
     img_url: "/images/emily_davis.jpg",
   },
   {
-    name: "Daniel Martinez",
-    text: "I can't thank this real estate team enough for their hard work and dedication. They went above and beyond to ensure I found the perfect home. Their expertise and professionalism were evident in every interaction. I would highly recommend them to anyone in the market for a new home.",
+    name: "Daniel Martinec",
+    text: "Nemôžem dostatočne poďakovať tomuto realitnému tímu za ich tvrdú prácu a odhodlanie. Vynaložili mimoriadne úsilie, aby som našiel dokonalý domov. Ich odbornosť a profesionalita boli zrejmé pri každej interakcii. Vrelo by som ich odporučil každému, kto hľadá nový domov.",
     img_url: "/images/daniel_martinez.jpg",
   },
 ];
@@ -50,11 +50,36 @@ function Testimonials() {
     setCurrentIndex(index);
   };
 
+  const preloadedImages = useMemo(() => {
+    return testimonialsData.map((testimonial, index) => ({
+      id: index,
+      element: testimonial.img_url ? (
+        <div key={index} className="w-full h-full relative">
+          <Image
+            src={testimonial.img_url}
+            alt={testimonial.name}
+            fill={true}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="w-full h-full object-cover"
+            priority={index === 0}
+          />
+        </div>
+      ) : (
+        <div
+          key={index}
+          className="w-24 h-24 rounded-full bg-blue-700 flex items-center justify-center text-white text-2xl font-bold"
+        >
+          {testimonial.name}
+        </div>
+      ),
+    }));
+  }, []);
+
   return (
     <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-extrabold text-center text-gray-900 sm:text-4xl mb-12">
-          What Our Clients Say
+          Čo hovoria naši klienti
         </h2>
 
         <div className="relative overflow-hidden px-8 sm:px-12">
@@ -64,24 +89,7 @@ function Testimonials() {
                 <div className="md:shrink-0 md:w-1/3 relative h-64 md:h-auto">
                   <div className="w-full h-full bg-indigo-200 relative">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {testimonialsData[currentIndex].img_url ? (
-                        <div className="w-full h-full relative">
-                          <Image
-                            src={testimonialsData[currentIndex].img_url}
-                            alt={testimonialsData[currentIndex].name}
-                            fill={true}
-                            sizes="cover"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-24 h-24 rounded-full bg-blue-700 flex items-center justify-center text-white text-2xl font-bold">
-                          {testimonialsData[currentIndex].name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </div>
-                      )}
+                      {preloadedImages[currentIndex].element}
                     </div>
                   </div>
                 </div>
@@ -114,7 +122,7 @@ function Testimonials() {
             <button
               onClick={goToPrev}
               className="rounded-full w-12 h-12 bg-white shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:bg-gray-50 transition-colors border border-gray-200"
-              aria-label="Previous"
+              aria-label="Predchádzajúci"
             >
               <ArrowLeftIcon className="w-5 h-5 text-gray-800" />
             </button>
@@ -123,12 +131,12 @@ function Testimonials() {
             <button
               onClick={goToNext}
               className="rounded-full w-12 h-12 bg-white shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:bg-gray-50 transition-colors border border-gray-200"
-              aria-label="Next"
+              aria-label="Ďalší"
             >
               <ArrowRightIcon className="w-5 h-5 text-gray-800" />
             </button>
           </div>
-          {/* Dots indicator */}
+
           <div className="flex justify-center mt-8 space-x-2">
             {testimonialsData.map((_, index) => (
               <button
@@ -139,7 +147,7 @@ function Testimonials() {
                     ? "bg-indigo-600"
                     : "bg-gray-300 hover:bg-gray-400"
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Prejsť na referenciu ${index + 1}`}
               />
             ))}
           </div>

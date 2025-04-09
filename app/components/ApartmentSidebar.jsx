@@ -88,7 +88,7 @@ function SidebarContent({ closeMobileMenu }) {
       index: 1,
       ringClassName: "ring-green-500",
       circleClassName: "bg-green-500",
-      text: "Available",
+      text: "Dostupné",
       filter: "all",
       isActive: true,
     },
@@ -97,7 +97,7 @@ function SidebarContent({ closeMobileMenu }) {
       filter: "reserved",
       ringClassName: "ring-yellow-500",
       circleClassName: "bg-yellow-500",
-      text: "Reserved",
+      text: "Rezervované",
       isActive: false,
     },
     {
@@ -105,7 +105,7 @@ function SidebarContent({ closeMobileMenu }) {
       filter: "sold",
       ringClassName: "ring-red-500",
       circleClassName: "bg-red-500",
-      text: "Sold",
+      text: "Predané",
       isActive: false,
     },
   ]);
@@ -176,9 +176,9 @@ function SidebarContent({ closeMobileMenu }) {
     <div className="w-full max-w-lg mx-auto md:mx-0 md:w-72 bg-white md:bg-white bg-opacity-95 md:bg-opacity-100 backdrop-blur-sm md:backdrop-blur-none h-full shadow-lg overflow-y-auto">
       <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200">
         <div>
-          <h2 className="text-xl font-bold text-gray-800">Filters</h2>
+          <h2 className="text-xl font-bold text-gray-800">Filtre</h2>
           <p className="text-sm text-gray-500 mt-1">
-            Find your dream apartment
+            Nájdite svoj vysnívaný byt
           </p>
         </div>
         <button
@@ -204,35 +204,35 @@ function SidebarContent({ closeMobileMenu }) {
 
       <div className="px-6 py-4 border-b border-gray-200">
         <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
-          Price Range
+          Cenové rozpätie
         </h3>
         <select
           className="w-full p-2 shadow-md border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
           onChange={(event) => handleSelectChange(event, "price")}
         >
-          <option value="off">Off</option>
-          <option value="highest-to-lowest">From highest to lowest</option>
-          <option value="lowest-to-highest">From lowest to highest</option>
+          <option value="off">Vypnuté</option>
+          <option value="highest-to-lowest">Od najvyššej po najnižšiu</option>
+          <option value="lowest-to-highest">Od najnižšej po najvyššiu</option>
         </select>
       </div>
 
       <div className="px-6 py-4 border-b border-gray-200">
         <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
-          Area (m²)
+          Rozloha (m²)
         </h3>
         <select
           className="w-full p-2 shadow-md border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
           onChange={(event) => handleSelectChange(event, "area")}
         >
-          <option value="off">Off</option>
-          <option value="highest-to-lowest">From highest to lowest</option>
-          <option value="lowest-to-highest">From lowest to highest</option>
+          <option value="off">Vypnuté</option>
+          <option value="highest-to-lowest">Od najväčšej po najmenšiu</option>
+          <option value="lowest-to-highest">Od najmenšej po najväčšiu</option>
         </select>
       </div>
 
       <div className="px-6 py-4 border-b border-gray-200">
         <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
-          Availability
+          Dostupnosť
         </h3>
         <div className="space-y-3">
           {buttons.map((button) => (
@@ -256,7 +256,7 @@ function SidebarContent({ closeMobileMenu }) {
 
       <div className="px-6 py-4 border-b border-gray-200">
         <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
-          Number of Rooms
+          Počet izieb
         </h3>
         <div className="flex flex-wrap gap-2">
           {[1, 2, 3, 4, 5].map((roomCount) => (
@@ -277,13 +277,13 @@ function SidebarContent({ closeMobileMenu }) {
             className="flex-1 py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             onClick={handleReset}
           >
-            Reset
+            Resetovať
           </button>
           <button
             onClick={handleApply}
             className="flex-1 py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Apply
+            Použiť
           </button>
         </div>
       </div>

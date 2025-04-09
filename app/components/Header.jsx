@@ -25,6 +25,10 @@ function Header() {
     }
   });
 
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <motion.header
       variants={{
@@ -33,25 +37,25 @@ function Header() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.4, ease: easeInOut }}
-      className="sticky top-0 z-50 w-full backdrop-blur-md bg-white shadow-sm"
+      className="sticky top-0 z-100 w-full backdrop-blur-md bg-white shadow-sm"
       style={{ backgroundColor: "rgba(255, 255, 255, 0.95)" }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           <div className="text-xl font-bold text-slate-900 mr-8">
-            RealEstate
+            RealitySlovakia
           </div>
 
           <nav className="hidden sm:flex sm:space-x-8">
             <Link href="/" className="group relative px-1 py-2">
               <span className="text-sm font-bold text-slate-700 transition-colors group-hover:text-slate-900">
-                Home
+                Domov
               </span>
               <span className="absolute bottom-2 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full"></span>
             </Link>
             <Link href="/apartments" className="group relative px-1 py-2">
               <span className="text-sm font-bold text-slate-700 transition-colors group-hover:text-slate-900">
-                Find
+                Hľadať
               </span>
               <span className="absolute bottom-2 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full"></span>
             </Link>
@@ -59,13 +63,13 @@ function Header() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link href="/contact">
+          <Link href="/contact" onClick={handleNavClick}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 text-sm font-medium text-white shadow-md transition-all hover:shadow-lg"
             >
-              Sell Your House
+              Predajte Váš Dom
             </motion.button>
           </Link>
 
@@ -85,15 +89,17 @@ function Header() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/"
+              onClick={handleNavClick}
               className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"
             >
-              Home
+              Domov
             </Link>
             <Link
               href="/apartments"
+              onClick={handleNavClick}
               className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"
             >
-              Find
+              Hľadať
             </Link>
           </div>
         </div>

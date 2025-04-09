@@ -21,9 +21,17 @@ function ApartmentPage({ data }) {
 
   const getStatusText = () => {
     if (typeof data.status === "string") {
-      return data.status.charAt(0).toUpperCase() + data.status.slice(1);
+      const statusMap = {
+        available: "Dostupný",
+        reserved: "Rezervovaný",
+        sold: "Predaný",
+      };
+      return (
+        statusMap[data.status] ||
+        data.status.charAt(0).toUpperCase() + data.status.slice(1)
+      );
     }
-    return "Unknown";
+    return "Neznámy";
   };
 
   const handleContactClick = () => {
@@ -81,7 +89,7 @@ function ApartmentPage({ data }) {
                 <Image
                   src={imageUrl}
                   alt={`${data.title} - ${
-                    index === 0 ? "Main Image" : "Floor Plan"
+                    index === 0 ? "Hlavný obrázok" : "Pôdorys"
                   }`}
                   fill
                   sizes="cover"
@@ -92,7 +100,7 @@ function ApartmentPage({ data }) {
           </div>
         ) : (
           <div className="bg-gray-200 h-[400px] flex items-center justify-center rounded-xl">
-            <p className="text-gray-500">No images available</p>
+            <p className="text-gray-500">Žiadne dostupné obrázky</p>
           </div>
         )}
       </div>
@@ -103,7 +111,7 @@ function ApartmentPage({ data }) {
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-sm uppercase font-semibold opacity-80">
-                  Price
+                  Cena
                 </p>
                 <p className="text-4xl font-bold">${data.price}</p>
               </div>
@@ -112,31 +120,31 @@ function ApartmentPage({ data }) {
                 onClick={handleContactClick}
               >
                 <PhoneIcon className="h-5 w-5 transition-transform group-hover:rotate-12" />
-                <span>Contact Us</span>
+                <span>Kontaktujte nás</span>
               </button>
             </div>
           </div>
 
           <div className="bg-white rounded-xl shadow-md p-8">
             <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-3">
-              Property Details
+              Detaily nehnuteľnosti
             </h2>
             <div className="grid grid-cols-3 gap-6">
               <div className="flex flex-col items-center p-5 rounded-lg bg-gray-50 hover:bg-blue-50 transition-colors">
                 <HomeIcon className="h-8 w-8 text-blue-600 mb-3" />
-                <p className="text-sm text-gray-500">Rooms</p>
+                <p className="text-sm text-gray-500">Izby</p>
                 <p className="text-2xl font-bold text-gray-800">{data.rooms}</p>
               </div>
               <div className="flex flex-col items-center p-5 rounded-lg bg-gray-50 hover:bg-blue-50 transition-colors">
                 <BuildingOffice2Icon className="h-8 w-8 text-blue-600 mb-3" />
-                <p className="text-sm text-gray-500">Floor</p>
+                <p className="text-sm text-gray-500">Poschodie</p>
                 <p className="text-2xl font-bold text-gray-800">
                   {data.floor || "N/A"}
                 </p>
               </div>
               <div className="flex flex-col items-center p-5 rounded-lg bg-gray-50 hover:bg-blue-50 transition-colors">
                 <ScaleIcon className="h-8 w-8 text-blue-600 mb-3" />
-                <p className="text-sm text-gray-500">Area</p>
+                <p className="text-sm text-gray-500">Plocha</p>
                 <p className="text-2xl font-bold text-gray-800">
                   {data.area} m²
                 </p>
@@ -146,7 +154,7 @@ function ApartmentPage({ data }) {
 
           <div className="bg-white rounded-xl shadow-md p-8">
             <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-3">
-              About This Property
+              O tejto nehnuteľnosti
             </h2>
             <div className="text-gray-700 leading-relaxed prose max-w-none">
               {typeof data.text === "string" ? (
@@ -154,7 +162,7 @@ function ApartmentPage({ data }) {
               ) : data.text ? (
                 <PortableText value={data.text} />
               ) : (
-                <p>No description available for this apartment.</p>
+                <p>Pre tento byt nie je k dispozícii žiadny popis.</p>
               )}
             </div>
           </div>
@@ -163,35 +171,35 @@ function ApartmentPage({ data }) {
         <div className="lg:col-span-1 space-y-8">
           <div className="bg-white rounded-xl shadow-md p-6">
             <h3 className="text-xl font-bold mb-5 text-gray-800 border-b pb-3">
-              Property Summary
+              Súhrn nehnuteľnosti
             </h3>
 
             <div className="space-y-4">
               <div className="flex justify-between">
-                <span className="text-gray-600">Type:</span>
-                <span className="font-medium">Apartment</span>
+                <span className="text-gray-600">Typ:</span>
+                <span className="font-medium">Byt</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Status:</span>
+                <span className="text-gray-600">Stav:</span>
                 <span className="font-medium">{getStatusText()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Area:</span>
+                <span className="text-gray-600">Plocha:</span>
                 <span className="font-medium">{data.area} m²</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Rooms:</span>
+                <span className="text-gray-600">Izby:</span>
                 <span className="font-medium">{data.rooms}</span>
               </div>
               {data.floor && (
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Floor:</span>
+                  <span className="text-gray-600">Poschodie:</span>
                   <span className="font-medium">{data.floor}</span>
                 </div>
               )}
               {data.orientation && (
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Orientation:</span>
+                  <span className="text-gray-600">Orientácia:</span>
                   <span className="font-medium">{data.orientation}</span>
                 </div>
               )}
@@ -199,16 +207,16 @@ function ApartmentPage({ data }) {
           </div>
 
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-xl shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">Interested?</h3>
+            <h3 className="text-xl font-bold mb-4">Máte záujem?</h3>
             <p className="mb-6 text-gray-300">
-              Contact our team for more information about this property
+              Kontaktujte náš tím pre viac informácií o tejto nehnuteľnosti
             </p>
             <button
               className="w-full bg-white text-gray-900 hover:bg-gray-100 py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center space-x-2 shadow-lg"
               onClick={handleContactClick}
             >
               <PhoneIcon className="h-5 w-5" />
-              <span>Contact Us</span>
+              <span>Kontaktujte nás</span>
             </button>
           </div>
         </div>

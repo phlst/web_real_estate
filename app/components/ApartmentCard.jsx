@@ -12,6 +12,12 @@ function ApartmentCard({ title, rooms, status, price, area, image, id }) {
     sold: "bg-red-100 text-red-800",
   };
 
+  const statusTranslations = {
+    available: "dostupný",
+    reserved: "rezervovaný",
+    sold: "predaný",
+  };
+
   function handleOnClick() {
     router.push(`/apartments/${id}`);
   }
@@ -26,7 +32,7 @@ function ApartmentCard({ title, rooms, status, price, area, image, id }) {
       <div className="relative h-48 sm:h-40 md:h-36 lg:h-48 w-full rounded-t-lg overflow-hidden">
         <Image
           src={source.url()}
-          alt={title || "Apartment"}
+          alt={title || "Byt"}
           className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           fill={true}
@@ -41,20 +47,19 @@ function ApartmentCard({ title, rooms, status, price, area, image, id }) {
           <span
             className={`px-2 py-1 rounded text-xs sm:text-sm whitespace-nowrap ${statusColors[status]}`}
           >
-            {status}
+            {statusTranslations[status] || status}
           </span>
         </div>
         <div className="text-gray-600 mb-4 flex-grow">
           <div className="grid grid-cols-2 gap-1 text-sm sm:text-base">
             <p className="font-medium">
-              Rooms: <span className="font-bold">{rooms}</span>
+              Izby: <span className="font-bold">{rooms}</span>
             </p>
             <p className="font-medium">
-              Area: <span className="font-bold">{area} m²</span>
+              Plocha: <span className="font-bold">{area} m²</span>
             </p>
             <p className="col-span-2 font-medium">
-              Price:{" "}
-              <span className="font-bold">${price.toLocaleString()}</span>
+              Cena: <span className="font-bold">${price.toLocaleString()}</span>
             </p>
           </div>
         </div>
@@ -65,7 +70,7 @@ function ApartmentCard({ title, rooms, status, price, area, image, id }) {
           }}
           className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"
         >
-          View Details
+          Zobraziť detaily
         </button>
       </div>
     </div>

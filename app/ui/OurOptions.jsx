@@ -7,36 +7,45 @@ import {
   useSpring,
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 function OurOptions() {
   const cards = [
     {
-      title: "Premium Listings",
+      title: "Prémiové ponuky",
       image: "/images/cardFirst.jpg",
       description:
-        "Exclusive high-end properties in prime locations with luxury finishes and amenities that exceed expectations.",
-      features: ["24/7 Concierge", "Private Gardens", "Smart Home Systems"],
+        "Exkluzívne nehnuteľnosti najvyššej triedy na lukratívnych miestach s luxusným vybavením, ktoré prekračujú očakávania.",
+      features: ["24/7 Recepcia", "Súkromné záhrady", "Smart systémy"],
     },
     {
-      title: "New Developments",
+      title: "Nové projekty",
       image: "/images/cardSecond.jpg",
       description:
-        "Modern living spaces with cutting-edge amenities designed for contemporary lifestyles and sustainable living.",
-      features: ["Energy Efficient", "Flexible Layouts", "Community Spaces"],
+        "Moderné obytné priestory s najnovšími vymoženosťami navrhnuté pre súčasný životný štýl a udržateľné bývanie.",
+      features: [
+        "Energeticky úsporné",
+        "Flexibilné pôdorysy",
+        "Spoločné priestory",
+      ],
     },
     {
-      title: "Investment Properties",
+      title: "Investičné nehnuteľnosti",
       image: "/images/cardThird.jpg",
       description:
-        "High-yield options with long-term growth potential carefully selected in emerging neighborhoods with strong ROI.",
-      features: ["Rental Guarantee", "Tax Benefits", "Portfolio Analysis"],
+        "Vysoko výnosné možnosti s dlhodobým potenciálom rastu starostlivo vybrané v rozvíjajúcich sa štvrtiach s vysokou návratnosťou investícií.",
+      features: ["Garantovaný nájom", "Daňové výhody", "Analýza portfólia"],
     },
     {
-      title: "Luxury Homes",
+      title: "Luxusné domy",
       image: "/images/cardFourth.jpg",
       description:
-        "Sophisticated residences with premium features that redefine luxury living with unparalleled attention to detail.",
-      features: ["Architect Designed", "Panoramic Views", "Premium Materials"],
+        "Sofistikované rezidencie s prémiovými prvkami, ktoré nanovo definujú luxusné bývanie s bezkonkurenčnou pozornosťou k detailom.",
+      features: [
+        "Architektom navrhnuté",
+        "Panoramatické výhľady",
+        "Prémiové materiály",
+      ],
     },
   ];
 
@@ -45,13 +54,13 @@ function OurOptions() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            Find Your Dream Home
+            Nájdite svoj vysnívaný domov
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-slate-700">
-            Discover exclusive properties tailored to your lifestyle and
-            preferences. Our curated selection represents the finest real estate
-            opportunities available in today&apos;s market, each carefully
-            evaluated to ensure exceptional quality and value.
+            Objavte exkluzívne nehnuteľnosti prispôsobené vášmu životnému štýlu
+            a preferenciám. Náš starostlivo vybraný výber predstavuje najlepšie
+            možnosti na realitnom trhu, každá dôkladne hodnotená pre
+            zabezpečenie výnimočnej kvality a hodnoty.
           </p>
         </div>
 
@@ -59,17 +68,17 @@ function OurOptions() {
           <div className="mb-10 lg:mb-0 lg:mr-12 lg:w-5/12">
             <div className="rounded-2xl bg-white p-8 shadow-xl border border-zinc-100">
               <h3 className="mb-4 text-2xl font-bold text-slate-900">
-                Why Choose Our Properties
+                Prečo si vybrať naše nehnuteľnosti
               </h3>
               <p className="mb-6 text-slate-700">
-                With decades of experience in the luxury real estate market, we
-                understand that finding the perfect home goes beyond square
-                footage and location. We prioritize quality, craftsmanship, and
-                long-term value in every property we offer.
+                S desiatkami rokov skúseností na trhu s luxusnými
+                nehnuteľnosťami rozumieme, že nájsť dokonalý domov presahuje
+                metráž a lokalitu. Prioritizujeme kvalitu, remeselné spracovanie
+                a dlhodobú hodnotu v každej nehnuteľnosti, ktorú ponúkame.
               </p>
 
               <h4 className="mb-3 text-xl font-semibold text-slate-800">
-                Our Commitment to Excellence
+                Náš záväzok k dokonalosti
               </h4>
               <ul className="mb-6 space-y-3">
                 <li className="flex items-start">
@@ -88,9 +97,8 @@ function OurOptions() {
                     </svg>
                   </span>
                   <span>
-                    Premium locations in the most desirable neighborhoods,
-                    strategically selected for appreciation potential and
-                    quality of life.
+                    Prémiové lokality v najžiadanejších štvrtiach, strategicky
+                    vybrané pre potenciál zhodnotenia a kvalitu života.
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -109,9 +117,9 @@ function OurOptions() {
                     </svg>
                   </span>
                   <span>
-                    Personalized service with over 20 years of experience,
-                    ensuring each client receives tailored guidance throughout
-                    the entire process.
+                    Personalizovaný servis s viac ako 20-ročnými skúsenosťami,
+                    zabezpečujúci, že každý klient dostane individuálne
+                    poradenstvo počas celého procesu.
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -130,9 +138,9 @@ function OurOptions() {
                     </svg>
                   </span>
                   <span>
-                    Exclusive access to off-market properties through our
-                    extensive network of developers, owners, and industry
-                    insiders.
+                    Exkluzívny prístup k nehnuteľnostiam mimo trhu
+                    prostredníctvom našej rozsiahlej siete developerov,
+                    majiteľov a odborníkov z odvetvia.
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -151,25 +159,29 @@ function OurOptions() {
                     </svg>
                   </span>
                   <span>
-                    Tailored financing options to match your budget, with access
-                    to preferred rates through our banking partnerships.
+                    Prispôsobené finančné možnosti zodpovedajúce vášmu rozpočtu,
+                    s prístupom k výhodným sadzbám prostredníctvom našich
+                    bankových partnerstiev.
                   </span>
                 </li>
               </ul>
 
               <h4 className="mb-3 text-xl font-semibold text-slate-800">
-                Our Client-First Approach
+                Náš prístup orientovaný na klienta
               </h4>
               <p className="mb-6 text-slate-700">
-                We believe in building lasting relationships with our clients.
-                From the initial consultation to closing and beyond, we remain
-                dedicated to your complete satisfaction and long-term happiness
-                with your investment.
+                Veríme v budovanie dlhodobých vzťahov s našimi klientmi. Od
+                prvej konzultácie až po ukončenie a aj neskôr, zostávame oddaní
+                vašej úplnej spokojnosti a dlhodobému šťastiu s vašou
+                investíciou.
               </p>
 
-              <button className="w-full rounded-md bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-800">
-                View All Properties
-              </button>
+              <Link
+                href="/apartments"
+                className="w-full rounded-md bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-800"
+              >
+                Zobraziť všetky nehnuteľnosti
+              </Link>
             </div>
           </div>
 

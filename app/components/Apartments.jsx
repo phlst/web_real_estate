@@ -16,9 +16,7 @@ async function Apartments({ searchParams }) {
 
   return (
     <div className="w-full p-4 md:p-6">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6">
-        Available Apartments
-      </h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6">Dostupné byty</h1>
 
       {data.length === 0 ? (
         <div className="flex justify-center items-center py-20">
@@ -38,10 +36,10 @@ async function Apartments({ searchParams }) {
               />
             </svg>
             <p className="text-lg text-gray-500 mt-4">
-              No apartments found matching your filters.
+              Nenašli sa žiadne byty zodpovedajúce vašim filtrom.
             </p>
             <p className="text-sm text-gray-400 mt-1">
-              Try changing or resetting your filters.
+              Skúste zmeniť alebo resetovať vaše filtre.
             </p>
           </div>
         </div>

@@ -7,7 +7,7 @@ function Hero() {
       <div className="relative h-screen overflow-hidden">
         <Image
           src="/images/hero_background.jpg"
-          alt="Cover Image"
+          alt="Úvodný obrázok"
           className="object-cover"
           fill={true}
           priority
@@ -16,14 +16,13 @@ function Hero() {
         <div className="absolute inset-0 flex items-center px-6 sm:px-16 md:px-24">
           <div className="max-w-4xl">
             <h1 className="mb-6 text-5xl font-bold text-white drop-shadow-lg md:text-6xl">
-              Discover Your Dream Home with Real Estate
+              Objavte svoj vysnívaný domov
             </h1>
             <p className="mb-8 text-xl font-semibold max-w-150 text-white drop-shadow-md md:text-xl">
-              Experience luxury living at its finest. Discover your dream home
-              in our modern residential complex. Explore our available
-              apartments and find the perfect place to call home. Enjoy
-              top-notch amenities and a vibrant community designed for your
-              lifestyle.
+              Zažite luxusné bývanie v najlepšej kvalite. Objavte svoj vysnívaný
+              domov. Preskúmajte naše dostupné byty a nájdite dokonalé miesto,
+              ktoré môžete nazvať domovom. Užite si prvotriedne vybavenie a živú
+              komunitu navrhnutú pre váš životný štýl.
             </p>
 
             <ShinyButton />

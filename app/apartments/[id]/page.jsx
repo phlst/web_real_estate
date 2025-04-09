@@ -15,7 +15,7 @@ async function Page({ params }) {
     return (
       <Suspense
         fallback={
-          <div className="text-center py-10">Loading apartment details...</div>
+          <div className="text-center py-10">Načítavajú sa detaily bytu...</div>
         }
       >
         <ApartmentPage data={apartment} />
@@ -25,7 +25,7 @@ async function Page({ params }) {
     console.error("Error fetching apartment:", error);
     return (
       <div className="text-center py-10 text-red-500">
-        Error loading apartment details
+        Chyba pri načítavaní detailov bytu
       </div>
     );
   }
