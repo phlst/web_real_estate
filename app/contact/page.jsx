@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import React, { Suspense } from "react";
 
 export default function ContactPage() {
@@ -41,11 +43,6 @@ function ContactSkeleton() {
 }
 
 function ContactContent() {
-  const {
-    useSearchParams,
-    useRouter,
-    usePathname,
-  } = require("next/navigation");
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
