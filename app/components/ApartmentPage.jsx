@@ -38,12 +38,6 @@ function ApartmentPage({ data }) {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
               {data.title}
             </h1>
-            <div className="flex items-center text-gray-600 mb-4">
-              <MapPinIcon className="h-5 w-5 mr-2 text-blue-500" />
-              <p className="text-lg">
-                {data.orientation || "Location information not available"}
-              </p>
-            </div>
           </div>
 
           <div className="mt-4 md:mt-0">
