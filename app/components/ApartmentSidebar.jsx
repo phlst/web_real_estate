@@ -1,8 +1,63 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 
 export function ApartmentSidebar() {
+  return (
+    <Suspense fallback={<SidebarSkeleton />}>
+      <SidebarContent />
+    </Suspense>
+  );
+}
+
+function SidebarSkeleton() {
+  return (
+    <div className="w-72 bg-white h-auto shadow-lg rounded-r-xl overflow-y-auto">
+      <div className="px-6 py-5 border-b border-gray-200">
+        <div className="h-6 w-1/2 bg-gray-200 rounded-md animate-pulse"></div>
+        <div className="h-4 w-3/4 bg-gray-200 rounded-md animate-pulse mt-1"></div>
+      </div>
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div className="h-4 w-1/3 bg-gray-200 rounded-md animate-pulse mb-4"></div>
+        <div className="h-10 w-full bg-gray-200 rounded-lg animate-pulse"></div>
+      </div>
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div className="h-4 w-1/3 bg-gray-200 rounded-md animate-pulse mb-4"></div>
+        <div className="h-10 w-full bg-gray-200 rounded-lg animate-pulse"></div>
+      </div>
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div className="h-4 w-1/3 bg-gray-200 rounded-md animate-pulse mb-4"></div>
+        <div className="space-y-3">
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="h-10 w-full bg-gray-200 rounded-lg animate-pulse"
+            ></div>
+          ))}
+        </div>
+      </div>
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div className="h-4 w-1/3 bg-gray-200 rounded-md animate-pulse mb-4"></div>
+        <div className="flex flex-wrap gap-2">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div
+              key={i}
+              className="h-10 w-10 bg-gray-200 rounded-full animate-pulse"
+            ></div>
+          ))}
+        </div>
+      </div>
+      <div className="px-6 py-4 sticky bottom-0 bg-white shadow-md -mt-px">
+        <div className="flex gap-3">
+          <div className="h-10 flex-1 bg-gray-200 rounded-lg animate-pulse"></div>
+          <div className="h-10 flex-1 bg-gray-200 rounded-lg animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SidebarContent() {
   const [buttons, setButtons] = useState([
     {
       index: 1,
