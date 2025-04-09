@@ -43,7 +43,7 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           <div className="text-xl font-bold text-slate-900 mr-8">
-            RealitySlovakia
+            <Link href="/">RealitySlovakia</Link>
           </div>
 
           <nav className="hidden sm:flex sm:space-x-8">
