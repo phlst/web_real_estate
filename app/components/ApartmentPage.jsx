@@ -53,8 +53,8 @@ function ApartmentPage({ data }) {
                 data.status === "available"
                   ? "bg-green-100 text-green-800 border border-green-300"
                   : data.status === "reserved"
-                  ? "bg-yellow-100 text-yellow-800 border border-yellow-300"
-                  : "bg-red-100 text-red-800 border border-red-300"
+                    ? "bg-yellow-100 text-yellow-800 border border-yellow-300"
+                    : "bg-red-100 text-red-800 border border-red-300"
               }`}
             >
               <span
@@ -63,8 +63,8 @@ function ApartmentPage({ data }) {
                   data.status === "available"
                     ? "bg-green-600"
                     : data.status === "reserved"
-                    ? "bg-yellow-600"
-                    : "bg-red-600"
+                      ? "bg-yellow-600"
+                      : "bg-red-600"
                 }`}
               ></span>
               {getStatusText()}
@@ -81,7 +81,7 @@ function ApartmentPage({ data }) {
                 key={index}
                 className={`${
                   index === 0 ? "col-span-1 md:col-span-2 row-span-2" : ""
-                } rounded-xl overflow-hidden shadow-lg transition transform hover:scale-[1.02] hover:shadow-xl`}
+                } rounded-xl relative overflow-hidden shadow-lg transition transform hover:scale-[1.02] hover:shadow-xl`}
                 style={{ height: index === 0 ? "500px" : "500px" }}
               >
                 <Image
@@ -90,8 +90,8 @@ function ApartmentPage({ data }) {
                     index === 0 ? "Main Image" : "Floor Plan"
                   }`}
                   fill
-                  className="ocover"
-                  sizes={index === 0 ? "66vw" : "33vw"}
+                  sizes="cover"
+                  priority={true}
                 />
               </div>
             ))}
